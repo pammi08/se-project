@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2023 at 09:04 AM
+-- Generation Time: Apr 15, 2023 at 07:24 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -40,16 +40,53 @@ CREATE TABLE IF NOT EXISTS `tbl_racer_details` (
   `Age` int(10) DEFAULT NULL,
   `Password` varchar(100) DEFAULT NULL,
   `UserRoles` varchar(100) DEFAULT NULL,
+  `BYKE` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tbl_racer_details`
+-- Table structure for table `tbl_race_detail`
 --
 
-INSERT INTO `tbl_racer_details` (`UserID`, `UserName`, `FirstName`, `LastName`, `Email`, `PhoneNO`, `Age`, `Password`, `UserRoles`) VALUES
-(1, 'Azar', 'Azaruddin', 'Bhadgavkar', 'azaruddinbhadgavkar1111@gmail.com', '08408098804', 32, '8408098804', 'Turnament Management'),
-(2, 'Azaruddin', 'Azaruddin', 'Bhadgavkar', 'azaruddinbhadgavkar1111@gmail.com', '08408098804', 32, '8408098804', 'Racers');
+DROP TABLE IF EXISTS `tbl_race_detail`;
+CREATE TABLE IF NOT EXISTS `tbl_race_detail` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Race_date` date DEFAULT NULL,
+  `Price` decimal(10,2) DEFAULT 0.00,
+  `Location` varchar(300) DEFAULT NULL,
+  `Race_Detail` varchar(300) DEFAULT NULL,
+  `Winner` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_race_detail`
+--
+
+INSERT INTO `tbl_race_detail` (`ID`, `Race_date`, `Price`, `Location`, `Race_Detail`, `Winner`) VALUES
+(1, '2023-04-22', '10000.00', 'Mumbai', '5 Km', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_race_participate_det`
+--
+
+DROP TABLE IF EXISTS `tbl_race_participate_det`;
+CREATE TABLE IF NOT EXISTS `tbl_race_participate_det` (
+  `ID` int(11) NOT NULL,
+  `RacerId` int(11) DEFAULT NULL,
+  `RaceId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_race_participate_det`
+--
+
+INSERT INTO `tbl_race_participate_det` (`ID`, `RacerId`, `RaceId`) VALUES
+(0, 1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
